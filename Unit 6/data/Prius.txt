@@ -1,0 +1,6 @@
+Toyota Prius,19000
+Color:Red $0,Liquid Grey Clearcoat Metallic $30,Yellow $40
+Transmission:automatic $0,standard $-815
+Brakes/Traction Control:Standard $0,ABS $400,ABS with Advance Trac $1625 
+Side Impact Air Bags:present $550,not present $0
+Power Moonroof:present $999,not present $0
