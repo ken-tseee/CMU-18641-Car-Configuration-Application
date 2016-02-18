@@ -66,68 +66,41 @@ public class FileIO {
 			return null;
 		}
 	}
-	/**
-	 * Read a file to memory.
-	 * @param file
-	 * @return
-	 * @throws IOException
-	 */
-/*	public Automobile fileReading(File file) throws IOException { 
-			FileReader fr = new FileReader(file);
-			BufferedReader br = new BufferedReader(fr);
-			String line = br.readLine();
-			if(line == null)
-				return null;	
-			int sizeOptionSet = firstLine(line);
-			String name = "Focus Wagon ZTW";
-			float basePrice = 18445;
-			Automobile au = new Automobile(name, basePrice, sizeOptionSet);
-			for(int i=0; i<sizeOptionSet; i++) {
-				line = br.readLine();
-				if(line == null) {
-					return null;
-				}
-				oneLine(line, i, au);
-			}
-			br.close();
-		return au;
-	}*/
 	
 	public Automobile fileReading(File file) throws IOException { 
-			FileReader fr = new FileReader(file);
-			BufferedReader br = new BufferedReader(fr);
-			String line = br.readLine();
-			if(line == null)
-				return null;	
-			fl = firstLine(line);
-			String name = fl[0];
-			float basePrice = 0;
-			int sizeOptionSet = 0;
+		FileReader fr = new FileReader(file);
+		BufferedReader br = new BufferedReader(fr);
+		String line = br.readLine();
+		if(line == null)
+			return null;	
+		fl = firstLine(line);
+		String name = fl[0];
+		float basePrice = 0;
+		int sizeOptionSet = 0;
+		try {
 			try {
-				try {
-					if(fl[1].equals("") || fl[1].equals(" ")) {
-						throw new AutoException(ErrorType.NO_BASEPRICE.ordinal(), "Exception: Base price is not found!");
-					}
-				} catch (AutoException ae) {
-					fl[1] = ae.fix(ErrorType.NO_BASEPRICE.ordinal());
-				} finally {
-					basePrice = Float.parseFloat(fl[1]);
+				if(fl[1].equals("") || fl[1].equals(" ")) {
+					throw new AutoException(ErrorType.NO_BASEPRICE.ordinal(), "Exception: Base price is not found!");
 				}
+			} catch (AutoException ae) {
+				fl[1] = ae.fix(ErrorType.NO_BASEPRICE.ordinal());
+			} finally {
+				basePrice = Float.parseFloat(fl[1]);
+			}
 				
-				sizeOptionSet = Integer.parseInt(fl[2]);
-		//		basePrice = Float.parseFloat(fl[1]);
-			} catch(NumberFormatException e) {
-				System.out.println("Error-- " + e.toString());
+			sizeOptionSet = Integer.parseInt(fl[2]);
+		} catch(NumberFormatException e) {
+			System.out.println("Error-- " + e.toString());
+		}
+		Automobile au = new Automobile(name, basePrice, sizeOptionSet);
+		for(int i=0; i<sizeOptionSet; i++) {
+			line = br.readLine();
+			if(line == null) {
+				return null;
 			}
-			Automobile au = new Automobile(name, basePrice, sizeOptionSet);
-			for(int i=0; i<sizeOptionSet; i++) {
-				line = br.readLine();
-				if(line == null) {
-					return null;
-				}
-				oneLine(line, i, au);
-			}
-			br.close();
+			oneLine(line, i, au);
+		}
+		br.close();
 		return au;
 	}
 	/**
@@ -192,17 +165,4 @@ public class FileIO {
 			}
 		}
 	}
-	/*
-	public void oneLine(String s, int n_opset, Automobile au) {
-		String[] s_part = s.split(":");
-		String optionSetName = s_part[0];
-		String[] pair = s_part[1].split(",");
-		int size_OptionSet = pair.length;
-		au.setOptionSet(n_opset, optionSetName, size_OptionSet);
-		String[] word;
-		for(int i=0; i<size_OptionSet; i++) {
-			word = pair[i].split("\\$");
-			au.setOption(n_opset, i, word[0], Float.parseFloat(word[1]));
-		}
-	}*/
 }
