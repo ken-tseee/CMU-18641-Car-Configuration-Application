@@ -74,42 +74,41 @@ public class FileIO {
 	 * @throws IOException
 	 */	
 	public Automobile fileReading(File file) throws IOException { 
-			FileReader fr = new FileReader(file);
-			BufferedReader br = new BufferedReader(fr);
-			String line = br.readLine();
-			fl = firstLine(line);
-			String make = fl[0].trim();
-			String model = fl[1].trim();
-			float basePrice = 0;
-		//	int sizeOptionSet = 0;
+		FileReader fr = new FileReader(file);
+		BufferedReader br = new BufferedReader(fr);
+		String line = br.readLine();
+		fl = firstLine(line);
+		String make = fl[0].trim();
+		String model = fl[1].trim();
+		float basePrice = 0;
+		try {
 			try {
-				try {
-					if(fl[2].equals("") || fl[2].equals(" ")) {
-						throw new AutoException(ErrorType.NO_BASEPRICE.ordinal(), "Exception: Base price is not found!");
-					}
-				} catch (AutoException ae) {
-					AutoException.log(ae);
-					fl[1] = ae.fix(ErrorType.NO_BASEPRICE.ordinal()).trim();
-				} finally {
-					basePrice = Float.parseFloat(fl[2]);
+				if(fl[2].equals("") || fl[2].equals(" ")) {
+					throw new AutoException(ErrorType.NO_BASEPRICE.ordinal(), "Exception: Base price is not found!");
 				}
-			} catch(NumberFormatException e) {
-				System.out.println("Error-- " + e.toString());
+			} catch (AutoException ae) {
+				AutoException.log(ae);
+				fl[1] = ae.fix(ErrorType.NO_BASEPRICE.ordinal()).trim();
+			} finally {
+				basePrice = Float.parseFloat(fl[2]);
 			}
-			Automobile au = new Automobile(make, model, basePrice);
-			boolean eof = false;
-			int n_optSet = 0;
-			while(!eof) {
-				line = br.readLine();
-				if(line == null) {
-					eof = true;
-				}
-				else {
-					oneLine(line, n_optSet, au);
-				}
-				n_optSet++;
+		} catch(NumberFormatException e) {
+			System.out.println("Error-- " + e.toString());
+		}
+		Automobile au = new Automobile(make, model, basePrice);
+		boolean eof = false;
+		int n_optSet = 0;
+		while(!eof) {
+			line = br.readLine();
+			if(line == null) {
+				eof = true;
 			}
-			br.close();
+			else {
+				oneLine(line, n_optSet, au);
+			}
+			n_optSet++;
+		}
+		br.close();
 		return au;
 	}
 	/**
