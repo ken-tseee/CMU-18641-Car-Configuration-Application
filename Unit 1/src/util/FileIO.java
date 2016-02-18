@@ -56,23 +56,23 @@ public class FileIO {
 	 * @throws IOException
 	 */
 	public Automobile fileReading(File file) throws IOException { 
-			FileReader fr = new FileReader(file);
-			BufferedReader br = new BufferedReader(fr);
-			String line = br.readLine();
-			if(line == null)
-				return null;	
-			int sizeOptionSet = firstLine(line);
-			String name = "Focus Wagon ZTW";
-			float basePrice = 18445;
-			Automobile au = new Automobile(name, basePrice, sizeOptionSet);
-			for(int i=0; i<sizeOptionSet; i++) {
-				line = br.readLine();
-				if(line == null) {
-					return null;
-				}
-				oneLine(line, i, au);
+		FileReader fr = new FileReader(file);
+		BufferedReader br = new BufferedReader(fr);
+		String line = br.readLine();
+		if(line == null)
+			return null;	
+		int sizeOptionSet = firstLine(line);
+		String name = "Focus Wagon ZTW";
+		float basePrice = 18445;
+		Automobile au = new Automobile(name, basePrice, sizeOptionSet);
+		for(int i=0; i<sizeOptionSet; i++) {
+			line = br.readLine();
+			if(line == null) {
+				return null;
 			}
-			br.close();
+			oneLine(line, i, au);
+		}
+		br.close();
 		return au;
 	}
 	/**
