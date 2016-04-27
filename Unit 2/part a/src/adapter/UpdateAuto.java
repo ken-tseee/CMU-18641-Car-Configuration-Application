@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package adapter;
 
 public interface UpdateAuto {
