@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package database;
 
 import java.io.FileInputStream;
