@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package scale;
 
 public class EditOptions implements Runnable {
