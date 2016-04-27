@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package client;
 
 import java.util.ArrayList;
