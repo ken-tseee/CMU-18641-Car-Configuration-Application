@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package model;
 
 import java.io.Serializable;
