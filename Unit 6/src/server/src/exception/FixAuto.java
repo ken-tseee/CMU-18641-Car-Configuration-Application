@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package exception;
 
 public interface FixAuto {
