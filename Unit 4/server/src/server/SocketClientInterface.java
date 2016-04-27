@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package server;
 
 public interface SocketClientInterface {
