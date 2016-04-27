@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package server;
 
 import java.io.IOException;
