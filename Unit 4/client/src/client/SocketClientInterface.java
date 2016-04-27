@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package client;
 
 public interface SocketClientInterface {
