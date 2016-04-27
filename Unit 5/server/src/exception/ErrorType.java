@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package exception;
 
 public enum ErrorType {
