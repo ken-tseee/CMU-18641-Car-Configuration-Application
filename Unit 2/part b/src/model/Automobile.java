@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package model;
 
 import java.io.Serializable;
@@ -14,7 +11,6 @@ public class Automobile implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private float basePrice;
-//	private OptionSet opset[];
 	
 	private String make;
 	private String model;
