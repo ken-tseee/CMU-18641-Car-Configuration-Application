@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package driver;
 
 import java.io.IOException;
