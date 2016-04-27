@@ -1,6 +1,3 @@
-/**
- * @author Ken
- */
 package driver;
 
 import adapter.BuildAuto;
