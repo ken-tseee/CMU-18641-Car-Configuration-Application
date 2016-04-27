@@ -1,6 +1,3 @@
-/**
- * @author Junjian Xie
- */
 package servlet;
 
 import java.io.IOException;
